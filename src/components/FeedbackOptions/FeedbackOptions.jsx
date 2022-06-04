@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import styles from './FeedbackOptions.module.css';
+import firstLetterLarge from 'components/Js/firstLetterLarge';
 
-const FeedbackOptions = ({ options, onLeaveFeedback, firstLetterLarge }) => {
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return Object.keys(options).map(data => (
     <button
       key={data}
