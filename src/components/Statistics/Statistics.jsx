@@ -12,13 +12,18 @@ function Statistics({ feedback, total }) {
 
   return (
     <div className={styles.text}>
-      {Object.keys(feedback).map(data => (
-        <p key={data}>
-          {firstLetterLarge(data)}: {feedback[data]}
-        </p>
-      ))}
-      <p>Total: {total()}</p>
-      <p>Positive feedback: {countPositiveFeedbackPercentage()}%</p>
+      <div className={styles.feedbackList}>
+        {Object.keys(feedback).map(data => (
+          <p key={data} className={styles.feedbackWrapper}>
+            {firstLetterLarge(data)}
+            <span className={styles.feedbackCount}>{feedback[data]}</span>
+          </p>
+        ))}
+      </div>
+      <div>
+        <p>Total: {total()}</p>
+        <p>Positive feedback: {countPositiveFeedbackPercentage()}%</p>
+      </div>
     </div>
   );
 }
