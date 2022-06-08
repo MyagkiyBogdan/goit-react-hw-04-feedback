@@ -3,7 +3,7 @@ import styles from './FeedbackOptions.module.css';
 import firstLetterLarge from 'components/Js/firstLetterLarge';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
-  return Object.keys(options).map(data => (
+  return options.map(data => (
     <button
       key={data}
       onClick={() => onLeaveFeedback(data)}
@@ -15,8 +15,8 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.object,
-  onLeaveFeedback: PropTypes.func,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
 };
 
 export default FeedbackOptions;

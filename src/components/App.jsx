@@ -10,7 +10,7 @@ export function App() {
   const [bad, setBad] = useState(0);
 
   const feedback = { good: good, neutral: neutral, bad: bad };
-
+  const feedbackTypes = Object.keys(feedback);
   const handleIncreaseStats = data => {
     switch (data) {
       case 'good':
@@ -34,11 +34,20 @@ export function App() {
     return good + neutral + bad;
   };
 
+  const countPositiveFeedbackPercentage = () => {
+    const total = countTotalFeedback();
+
+    if (total === 0) {
+      return 0;
+    }
+    return Math.floor((good * 100) / total);
+  };
+
   return (
     <div className="wrapper">
       <Section title="Please leave feedback">
         <FeedbackOptions
-          options={feedback}
+          options={feedbackTypes}
           onLeaveFeedback={handleIncreaseStats}
         />
       </Section>
@@ -46,7 +55,8 @@ export function App() {
         {countTotalFeedback() > 0 ? (
           <Statistics
             feedback={feedback}
-            total={countTotalFeedback}
+            total={countTotalFeedback()}
+            positivePercentage={countPositiveFeedbackPercentage()}
           ></Statistics>
         ) : (
           <Notification message="There is no feedback" />

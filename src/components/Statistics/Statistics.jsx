@@ -2,14 +2,7 @@ import PropTypes from 'prop-types';
 import styles from './Statistics.module.css';
 import firstLetterLarge from 'components/Js/firstLetterLarge';
 
-function Statistics({ feedback, total }) {
-  const countPositiveFeedbackPercentage = () => {
-    if (total() === 0) {
-      return 0;
-    }
-    return Math.floor((feedback.good * 100) / total());
-  };
-
+function Statistics({ feedback, total, positivePercentage }) {
   return (
     <div className={styles.text}>
       <div className={styles.feedbackList}>
@@ -21,15 +14,21 @@ function Statistics({ feedback, total }) {
         ))}
       </div>
       <div>
-        <p>Total: {total()}</p>
-        <p>Positive feedback: {countPositiveFeedbackPercentage()}%</p>
+        <p>Total: {total}</p>
+        <p>Positive feedback: {positivePercentage}%</p>
       </div>
     </div>
   );
 }
 
 Statistics.propTypes = {
-  feedback: PropTypes.object,
+  feedback: PropTypes.shape({
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+  }),
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
 };
 
 export default Statistics;
