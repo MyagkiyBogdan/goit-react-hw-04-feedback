@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styles from './FeedbackOptions.module.css';
-import firstLetterLarge from 'components/Js/firstLetterLarge';
+import firstLetterLarge from 'utils/firstLetterLarge';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return options.map(data => (

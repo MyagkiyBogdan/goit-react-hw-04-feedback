@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styles from './Statistics.module.css';
-import firstLetterLarge from 'components/Js/firstLetterLarge';
+import firstLetterLarge from 'utils/firstLetterLarge';
 
 function Statistics({ feedback, total, positivePercentage }) {
   return (
